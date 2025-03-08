@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+/* ✅ Import Gilroy Font Correctly */
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Bold.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ✅ Set Default Font */
+html {
+  font-family: "Gilroy", sans-serif;
+}
+
+
+
+/* ✅ Define CSS Variables */
+@theme {
+  --color-primary: #EF4130;
+  --color-secondary: #E61E14;
+  --color-accent: #F59E0B;
+  --color-dark: #1F2937;
+  --color-light: #F3F4F6;
+  --color-background: #F8FAFC;
+  --color-border: #E5E7EB;
+ 
+ 
+
+  --font-primary: "Gilroy", sans-serif;
+  --font-secondary: "Inter", sans-serif;
+  --font-heading: "Gilroy", sans-serif;
+  
+
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
