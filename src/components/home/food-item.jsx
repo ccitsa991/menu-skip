@@ -44,7 +44,7 @@ const FoodItem = ({ item, onClick }) => {
             className={`w-full h-full object-cover transition-opacity duration-500 ${
               imageLoaded ? "opacity-100" : "opacity-0"
             }`}
-            onLoad={() => setImageLoaded(true)} 
+            onLoad={() => setImageLoaded(true)}
           />
         </div>
       </div>

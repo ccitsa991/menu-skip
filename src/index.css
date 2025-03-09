@@ -36,25 +36,18 @@ html {
   font-family: "Gilroy", sans-serif;
 }
 
-
-
 /* ✅ Define CSS Variables */
 @theme {
-  --color-primary: #EF4130;
-  --color-secondary: #E61E14;
-  --color-text-color: #23282E;
-  --color-dark:black;
+  --color-primary: #ef4130;
+  --color-secondary: #e61e14;
+  --color-text-color: #23282e;
+  --color-dark: black;
   --color-light: #fff;
-  
- 
- 
- 
+  --color-white: #fff;  
 
   --font-primary: "Gilroy", sans-serif;
   --font-secondary: "Inter", sans-serif;
   --font-heading: "Gilroy", sans-serif;
-  
-
 
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -72,15 +65,18 @@ html {
   --shadow-lg: 0px 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-@layer theme{
- 
+@layer theme {
   .dark {
-    --color-primary: #EF4130;
+    /* --color-primary: #EF4130;
     --color-secondary: EF4130;
     --color-white:black;
     --color-dark:#fff;
-    --color-text-color: #fff;
-  }
+    --color-text-color: #fff; */
 
- 
+    --color-primary: #ff6b5a;
+    --color-secondary: #d62828; 
+    --color-text-color: #e0e0e0;  
+    --color-white: #121212;  
+    --color-dark: #fff;  
+  }
 }

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { PiInfoLight } from "react-icons/pi";
+import { useTranslation } from "react-i18next";
 import SharedModal from "../shared/modal";
 
 const Footer = () => {
+  const { t } = useTranslation(); // Use translation hook
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -15,28 +17,25 @@ const Footer = () => {
           onClick={() => setIsModalOpen(true)}
         >
           <PiInfoLight className="text-lg" />
-          <p className="underline">Daily Calories</p>
+          <p className="underline">{t("footer.dailyCalories")}</p>
         </div>
 
         {/* Right Section - Powered By */}
         <div className="flex items-center">
-          <p >Powered by</p>
+          <p>{t("footer.poweredBy")}</p>
           <img src="/images/skip-logo.svg" alt="skip" className="ps-1" />
         </div>
       </div>
 
       {/* Modal Component */}
-
       <SharedModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title={"Daily Calorie"}
+        title={t("footer.modal.title")}
       >
         {/* Modal Content */}
         <p className="text-[#8890A0] text-center pt-4 px-4">
-          Children aged 4-13 need an average of (1200-1500) calories per day,
-          and those over 13 years old need an average of 2000 calories per day.
-          Individual calorie needs differ from one person to another.
+          {t("footer.modal.content")}
         </p>
       </SharedModal>
     </>

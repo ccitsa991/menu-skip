@@ -14,7 +14,7 @@ const BannerCard = ({
   setLanguage,
   language,
 }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation(); // Use translation
 
   const lat = merchant?.branches?.find((el) => el.id === branchId)?.location
     ?.latitude;
@@ -26,7 +26,7 @@ const BannerCard = ({
       const googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
       window.open(googleMapsUrl, "_blank"); 
     } else {
-      alert("Location not available");
+      alert(t("home.alerts.locationNotAvailable")); // Translated alert
     }
   };
 
@@ -39,6 +39,7 @@ const BannerCard = ({
     },
     [i18n]
   );
+
   return (
     <div className="flex flex-col bg-white">
       {/* Image Section */}
@@ -52,7 +53,7 @@ const BannerCard = ({
 
         {/* Back Button */}
         <button
-          className={`absolute top-4 w-fit  p-2 rounded-full shadow-md bg-white ${
+          className={`absolute top-4 w-fit p-2 rounded-full shadow-md bg-white ${
             i18n.dir() === "rtl" ? "right-4" : "left-4"
           }`}
         >
@@ -63,60 +64,41 @@ const BannerCard = ({
         <img
           src={merchant?.storeLogoUrl}
           alt={merchant?.store_name}
-          className={`absolute bottom-[-50px]  h-24 w-24 bg-white rounded-3xl shadow-xl ${
+          className={`absolute bottom-[-50px] h-24 w-24 bg-white rounded-3xl shadow-xl ${
             i18n.dir() === "rtl" ? "right-4" : "left-4"
           }`}
         />
 
         {/* Language & Dark Mode Toggle Buttons */}
         <div
-          className={`absolute top-4  flex gap-2 ${
+          className={`absolute top-4 flex gap-2 ${
             i18n.dir() === "rtl" ? "left-4" : "right-4"
           }`}
         >
           {/* Language Toggle Button */}
-          {i18n.language === "en" ? (
-            <button
-              onClick={() => toggleLanguage("ar")}
-              className="p-2 rounded-full bg-white shadow-md"
-            >
-              <FaGlobe className="text-lg text-text-color" />
-            </button>
-          ) : (
-            <button
-              onClick={() => toggleLanguage("en")}
-              className="p-2 rounded-full bg-white shadow-md"
-            >
-              <FaGlobe className="text-lg text-text-color" />
-            </button>
-          )}
+          <button
+            onClick={() => toggleLanguage(i18n.language === "en" ? "ar" : "en")}
+            className="p-2 rounded-full bg-white shadow-md"
+          >
+            <FaGlobe className="text-lg text-text-color" />
+          </button>
 
           {/* Dark Mode Toggle Button */}
-          {theme === "dark" && (
-            <button
-              onClick={() => {
-                document.querySelector("body").classList = "light";
-                setTheme("light");
-                localStorage.setItem("theme", "light");
-              }}
-              className="p-2 rounded-full bg-white shadow-md"
-            >
+          <button
+            onClick={() => {
+              const newTheme = theme === "dark" ? "light" : "dark";
+              document.querySelector("body").classList = newTheme;
+              setTheme(newTheme);
+              localStorage.setItem("theme", newTheme);
+            }}
+            className="p-2 rounded-full bg-white shadow-md"
+          >
+            {theme === "dark" ? (
               <FaSun className="text-lg text-dark" />
-            </button>
-          )}
-
-          {theme === "light" && (
-            <button
-              onClick={() => {
-                document.querySelector("body").classList = "dark";
-                setTheme("dark");
-                localStorage.setItem("theme", "dark");
-              }}
-              className="p-2 rounded-full bg-white shadow-md"
-            >
+            ) : (
               <FaMoon className="text-lg text-dark" />
-            </button>
-          )}
+            )}
+          </button>
         </div>
       </div>
 
@@ -128,7 +110,6 @@ const BannerCard = ({
         </h2>
 
         {/* Select Branch Button */}
-
         <SelectBranch
           branchId={branchId}
           setBranchId={setBranchId}
@@ -144,14 +125,14 @@ const BannerCard = ({
         >
           {/* Text Section */}
           <div className="flex flex-col">
-            <p className=" font-bold text-text-color underline">
-              Get Directions
+            <p className="font-bold text-text-color underline">
+              {t("home.buttons.getDirections")}
             </p>
           </div>
 
           {/* Icon Section */}
-          <div className="flex items-center justify-center w-8 h-8 bg-black rounded-lg">
-            <FaDirections className="text-text-color text-xl" />
+          <div className="flex items-center justify-center w-8 h-8 bg-dark rounded-lg">
+            <FaDirections className="text-white text-xl" />
           </div>
         </div>
       </div>

@@ -1,3 +1,33 @@
 {
-  
+  "home": {
+    "buttons": {
+      "getDirections": "Get Directions"
+    },
+    "alerts": {
+      "locationNotAvailable": "Location not available"
+    },
+    "errors": {
+      "merchant": "Error fetching merchant data:",
+      "categories": "Error fetching categories:",
+      "items": "Error fetching items:"
+    }
+  },
+  "footer": {
+    "dailyCalories": "Daily Calories",
+    "poweredBy": "Powered by",
+    "modal": {
+      "title": "Daily Calorie",
+      "content": "Children aged 4-13 need an average of (1200-1500) calories per day, and those over 13 years old need an average of 2000 calories per day. Individual calorie needs differ from one person to another."
+    }
+  },
+  "branches": {
+    "selectBranch": "Select Branch",
+    "modalTitle": "Select Branch",
+    "done": "Done"
+  },
+  "foodModal": {
+    "close": "Close",
+    "price": "Price: {{price}}"
+  }
+
 }

@@ -1,9 +1,9 @@
 import { FaTimes } from "react-icons/fa";
-import { PiCurrencyKztBold } from "react-icons/pi";
-import { FaFireAlt } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const FoodModal = ({ isOpen, item, onClose }) => {
+  const { t } = useTranslation(); // Use translation hook
   const [showModal, setShowModal] = useState(false);
 
   // Smooth Snooze Effect
@@ -64,7 +64,9 @@ const FoodModal = ({ isOpen, item, onClose }) => {
               {addon?.choices?.map((choice) => (
                 <div key={choice?.id} className="mt-2">
                   <p className="text-black">{choice?.name}</p>
-                  <span className="text-[#8890A0]">({choice?.price})</span>
+                  <span className="text-[#8890A0]">
+                    {t("foodModal.price", { price: choice?.price })}
+                  </span>
                 </div>
               ))}
             </div>
@@ -76,7 +78,7 @@ const FoodModal = ({ isOpen, item, onClose }) => {
           className="w-full mt-6 py-3 bg-primary text-light font-semibold rounded-lg"
           onClick={onClose}
         >
-          Close
+          {t("foodModal.close")}
         </button>
 
         {/* Drag Handle */}

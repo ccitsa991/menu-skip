@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { FaTimes, FaCheckCircle, FaRegCircle } from "react-icons/fa";
 import { HiOutlineLocationMarker } from "react-icons/hi";
+import { useTranslation } from "react-i18next";
 
-const SelectBranch = ({branches,
-  setBranchId,
-  branchId
-}) => {
+const SelectBranch = ({ branches, setBranchId, branchId }) => {
+  const { t } = useTranslation(); // Use translation hook
   const [isOpen, setIsOpen] = useState(false);
-
 
   const handleSelectBranch = (branch) => {
     setBranchId(branch);
@@ -21,7 +19,8 @@ const SelectBranch = ({branches,
         onClick={() => setIsOpen(true)}
       >
         <HiOutlineLocationMarker className="text-primary text-1xl" />
-        {branches?.find((el)=>el.id === branchId)?.name || "Select Branch"}
+        {branches?.find((el) => el.id === branchId)?.name ||
+          t("branches.selectBranch")}
       </button>
 
       {/* Modal Overlay */}
@@ -37,12 +36,14 @@ const SelectBranch = ({branches,
         className={`fixed bottom-0 z-50 left-0 w-full bg-white rounded-t-3xl p-6 shadow-lg transform transition-transform duration-500 ${
           isOpen ? "translate-y-0" : "translate-y-full"
         }`}
-        onClick={(e) => e.stopPropagation()}  
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
         <div className="flex justify-between items-center border-b border-gray-200">
           <div className=""></div>
-          <h2 className="text-lg text-center pb-4 text-text-color">Select Branch</h2>
+          <h2 className="text-lg text-center pb-4 text-text-color">
+            {t("branches.modalTitle")}
+          </h2>
           <button onClick={() => setIsOpen(false)}>
             <FaTimes className="text-primary text-xl mb-4" />
           </button>
@@ -71,11 +72,11 @@ const SelectBranch = ({branches,
           className="w-full mt-6 py-3 bg-primary text-light font-semibold rounded-lg"
           onClick={() => setIsOpen(false)}
         >
-          Done
+          {t("branches.done")}
         </button>
 
         {/* Drag Handle */}
-        <div className="w-12 h-1  bg-gray-400 rounded-full mx-auto mt-2" />
+        <div className="w-12 h-1 bg-gray-400 rounded-full mx-auto mt-2" />
       </div>
     </div>
   );

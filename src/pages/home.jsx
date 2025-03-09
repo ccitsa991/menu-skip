@@ -6,11 +6,14 @@ import Footer from "../components/home/footer";
 import { useCategories, useMerchant, useItems } from "../services/queries";
 import Spinner from "../components/shared/spinner";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
+  const { t, i18n } = useTranslation(); // Use translation hook
   const { merchantId } = useParams();
-  const [theme, setTheme] = useState("");
-  const [language, setLanguage] = useState("EN");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [language, setLanguage] = useState(localStorage.getItem("locale") || "en");
+
   // Fetch merchant data
   const {
     loading: merchantLoading,
@@ -40,16 +43,20 @@ const Home = () => {
       setCategoryId(categories[0].id);
     }
   }, [categories]);
+
+  // Handle Theme Changes
   useEffect(() => {
-    const currentTheme = localStorage.getItem('theme')
-    if (theme === 'dark') {
-      setTheme('dark');
-      document.querySelector("body").classList = "dark";
-    }else{
-      setTheme('light');
-      document.querySelector("body").classList = "light";
-    }
-  }, []);
+    document.querySelector("body").classList = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  // Handle Language Changes
+  useEffect(() => {
+    i18n.changeLanguage(language);
+    document.querySelector("html").dir = i18n.dir();
+    document.querySelector("html").lang = language;
+    localStorage.setItem("locale", language);
+  }, [language, i18n]);
 
   // Fetch items based on merchantId, categoryId, and branchId
   const {
@@ -71,18 +78,20 @@ const Home = () => {
   if (merchantError)
     return (
       <p className="text-red-500">
-        Error fetching merchant data: {merchantError.message}
+        {t("home.errors.merchant")} {merchantError.message}
       </p>
     );
   if (categoriesError)
     return (
       <p className="text-red-500">
-        Error fetching categories: {categoriesError.message}
+        {t("home.errors.categories")} {categoriesError.message}
       </p>
     );
   if (itemsError)
     return (
-      <p className="text-red-500">Error fetching items: {itemsError.message}</p>
+      <p className="text-red-500">
+        {t("home.errors.items")} {itemsError.message}
+      </p>
     );
 
   return (
