@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router";
 import { ApolloProvider } from "@apollo/client";
 import client from "./libs/apolloClient.js";
+import './i18n';
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

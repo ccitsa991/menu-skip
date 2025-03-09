@@ -4,14 +4,19 @@ import CategoryCarousel from "../components/home/categories";
 import FoodList from "../components/home/food-list";
 import Footer from "../components/home/footer";
 import { useCategories, useMerchant, useItems } from "../services/queries";
-import Spinner from '../components/shared/spinner';
+import Spinner from "../components/shared/spinner";
 import { useParams } from "react-router-dom";
 
 const Home = () => {
-  const { merchantId } = useParams()
-
+  const { merchantId } = useParams();
+  const [theme, setTheme] = useState("");
+  const [language, setLanguage] = useState("EN");
   // Fetch merchant data
-  const { loading: merchantLoading, error: merchantError, merchant } = useMerchant(merchantId);
+  const {
+    loading: merchantLoading,
+    error: merchantError,
+    merchant,
+  } = useMerchant(merchantId);
   const [branchId, setBranchId] = useState(null);
 
   // Update branchId when merchant data is available
@@ -22,7 +27,11 @@ const Home = () => {
   }, [merchant]);
 
   // Fetch categories based on selected branch
-  const { loading: categoriesLoading, error: categoriesError, categories } = useCategories(branchId);
+  const {
+    loading: categoriesLoading,
+    error: categoriesError,
+    categories,
+  } = useCategories(branchId);
   const [categoryId, setCategoryId] = useState(null);
 
   // Update categoryId when categories data is available
@@ -31,31 +40,71 @@ const Home = () => {
       setCategoryId(categories[0].id);
     }
   }, [categories]);
+  useEffect(() => {
+    const currentTheme = localStorage.getItem('theme')
+    if (theme === 'dark') {
+      setTheme('dark');
+      document.querySelector("body").classList = "dark";
+    }else{
+      setTheme('light');
+      document.querySelector("body").classList = "light";
+    }
+  }, []);
 
   // Fetch items based on merchantId, categoryId, and branchId
-  const { loading: itemsLoading, error: itemsError, items } = useItems(merchantId, categoryId, branchId);
+  const {
+    loading: itemsLoading,
+    error: itemsError,
+    items,
+  } = useItems(merchantId, categoryId, branchId);
 
   // Handle full-page loading state
   if (merchantLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <Spinner />  
+        <Spinner />
       </div>
     );
   }
 
   // Handle errors
-  if (merchantError) return <p className="text-red-500">Error fetching merchant data: {merchantError.message}</p>;
-  if (categoriesError) return <p className="text-red-500">Error fetching categories: {categoriesError.message}</p>;
-  if (itemsError) return <p className="text-red-500">Error fetching items: {itemsError.message}</p>;
+  if (merchantError)
+    return (
+      <p className="text-red-500">
+        Error fetching merchant data: {merchantError.message}
+      </p>
+    );
+  if (categoriesError)
+    return (
+      <p className="text-red-500">
+        Error fetching categories: {categoriesError.message}
+      </p>
+    );
+  if (itemsError)
+    return (
+      <p className="text-red-500">Error fetching items: {itemsError.message}</p>
+    );
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Banner Section */}
-      <BannerCard merchant={merchant} branchId={branchId} setBranchId={setBranchId} />
+      <BannerCard
+        theme={theme}
+        setTheme={setTheme}
+        merchant={merchant}
+        branchId={branchId}
+        setBranchId={setBranchId}
+        setLanguage={setLanguage}
+        language={language}
+      />
 
       {/* Categories Section */}
-      <div className="px-6 pt-2 pb-3 sticky top-0 bg-white">
-        <CategoryCarousel categoryId={categoryId} setCategoryId={setCategoryId} categories={categories} />
+      <div className="px-6 z-10 pt-2 pb-3 sticky top-0 bg-white">
+        <CategoryCarousel
+          categoryId={categoryId}
+          setCategoryId={setCategoryId}
+          categories={categories}
+        />
       </div>
 
       {/* Items List Section */}

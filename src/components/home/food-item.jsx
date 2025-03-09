@@ -13,7 +13,7 @@ const FoodItem = ({ item, onClick }) => {
       >
         {/* Left Section - Text */}
         <div className="flex flex-col">
-          <h3 className="font-semibold">{item.name}</h3>
+          <h3 className="font-semibold text-text-color">{item.name}</h3>
           <div className="flex items-center gap-4 mt-2">
             <span className="flex items-center text-primary text-lg font-semibold">
               <img
@@ -23,8 +23,8 @@ const FoodItem = ({ item, onClick }) => {
               />
               {item.price}
             </span>
-            <span className="flex items-center text-black font-semibold text-xs">
-              <FaFireAlt className="me-1 text-black" />
+            <span className="flex items-center text-text-color font-semibold text-xs">
+              <FaFireAlt className="me-1 text-text-color" />
               {item.calories}
             </span>
           </div>
@@ -44,7 +44,7 @@ const FoodItem = ({ item, onClick }) => {
             className={`w-full h-full object-cover transition-opacity duration-500 ${
               imageLoaded ? "opacity-100" : "opacity-0"
             }`}
-            onLoad={() => setImageLoaded(true)} // When image loads, hide shimmer
+            onLoad={() => setImageLoaded(true)} 
           />
         </div>
       </div>

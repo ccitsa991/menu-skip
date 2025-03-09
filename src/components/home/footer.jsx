@@ -8,19 +8,19 @@ const Footer = () => {
   return (
     <>
       {/* Fixed Footer */}
-      <div className="fixed bottom-0 left-0 w-full bg-white shadow-lg py-3 px-6 flex items-center justify-between">
+      <div className="fixed bottom-0 left-0 w-full text-text-color bg-white shadow-lg py-3 px-6 flex items-center justify-between">
         {/* Left Section - Daily Calories */}
         <div
           className="flex items-center gap-2 cursor-pointer"
           onClick={() => setIsModalOpen(true)}
         >
-          <PiInfoLight className="text-gray-600 text-lg" />
-          <p className="text-gray-800 underline">Daily Calories</p>
+          <PiInfoLight className="text-lg" />
+          <p className="underline">Daily Calories</p>
         </div>
 
         {/* Right Section - Powered By */}
         <div className="flex items-center">
-          <p className="text-gray-600">Powered by</p>
+          <p >Powered by</p>
           <img src="/images/skip-logo.svg" alt="skip" className="ps-1" />
         </div>
       </div>

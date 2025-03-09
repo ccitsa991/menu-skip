@@ -17,7 +17,7 @@ const SharedModal = ({ isOpen, onClose, title, children }) => {
     <>
       {/* Modal Overlay */}
       <div
-        className={`fixed inset-0 bg-black transition-opacity duration-500 ${
+        className={`fixed z-20 inset-0 bg-black transition-opacity duration-500  ${
           isOpen ? "opacity-50 visible" : "opacity-0 invisible"
         }`}
         onClick={onClose}
@@ -25,7 +25,7 @@ const SharedModal = ({ isOpen, onClose, title, children }) => {
 
       {/* Bottom Sheet Modal */}
       <div
-        className={`fixed bottom-0 left-0 w-full bg-white rounded-t-3xl p-6 shadow-lg transform transition-transform duration-500 ${
+        className={`z-20 fixed bottom-0 left-0 w-full bg-white rounded-t-3xl p-6 shadow-lg transform transition-transform duration-500 ${
           showModal ? "translate-y-0" : "translate-y-full"
         }`}
         onClick={(e) => e.stopPropagation()} // Prevent close when clicking inside modal
@@ -33,7 +33,7 @@ const SharedModal = ({ isOpen, onClose, title, children }) => {
         {/* Modal Header */}
         <div className="flex justify-between items-center">
           <div className=""></div>
-          <h2 className="text-lg font-semibold py-3">{title}</h2>
+          <h2 className="text-lg font-semibold py-3 text-dark">{title}</h2>
           <button onClick={onClose}>
             <FaTimes className="text-primary text-xl" />
           </button>

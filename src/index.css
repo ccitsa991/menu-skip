@@ -42,11 +42,11 @@ html {
 @theme {
   --color-primary: #EF4130;
   --color-secondary: #E61E14;
-  --color-accent: #F59E0B;
-  --color-dark: #1F2937;
-  --color-light: #F3F4F6;
-  --color-background: #F8FAFC;
-  --color-border: #E5E7EB;
+  --color-text-color: #23282E;
+  --color-dark:black;
+  --color-light: #fff;
+  
+ 
  
  
 
@@ -70,4 +70,17 @@ html {
   --shadow-sm: 0px 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-md: 0px 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@layer theme{
+ 
+  .dark {
+    --color-primary: #EF4130;
+    --color-secondary: EF4130;
+    --color-white:black;
+    --color-dark:#fff;
+    --color-text-color: #fff;
+  }
+
+ 
 }

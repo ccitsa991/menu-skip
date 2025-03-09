@@ -21,7 +21,7 @@ const FoodModal = ({ isOpen, item, onClose }) => {
     <>
       {/* Modal Overlay */}
       <div
-        className={`fixed inset-0 bg-black transition-opacity duration-500 ${
+        className={`fixed z-20 inset-0 bg-black transition-opacity duration-500 ${
           isOpen ? "opacity-50 visible" : "opacity-0 invisible"
         }`}
         onClick={onClose}
@@ -29,14 +29,14 @@ const FoodModal = ({ isOpen, item, onClose }) => {
 
       {/* Bottom Sheet Modal */}
       <div
-        className={`fixed bottom-0 left-0 w-full z-50 bg-white rounded-t-3xl p-6 shadow-lg transform transition-transform duration-500 ${
+        className={`fixed z-20 bottom-0 left-0 w-full z-50 bg-white rounded-t-3xl p-6 shadow-lg transform transition-transform duration-500 ${
           showModal ? "translate-y-0" : "translate-y-full"
         }`}
         onClick={(e) => e.stopPropagation()} // Prevent close when clicking inside modal
       >
         {/* Modal Header */}
         <div className="flex justify-between items-center">
-          <h2 className="text-lg font-semibold">{item.name}</h2>
+          <h2 className="text-lg font-semibold text-dark">{item.name}</h2>
           <button onClick={onClose}>
             <FaTimes className="text-primary text-xl" />
           </button>
@@ -73,7 +73,7 @@ const FoodModal = ({ isOpen, item, onClose }) => {
 
         {/* Close Button */}
         <button
-          className="w-full mt-6 py-3 bg-primary text-white font-semibold rounded-lg"
+          className="w-full mt-6 py-3 bg-primary text-light font-semibold rounded-lg"
           onClick={onClose}
         >
           Close

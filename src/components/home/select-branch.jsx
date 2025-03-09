@@ -42,7 +42,7 @@ const SelectBranch = ({branches,
         {/* Modal Header */}
         <div className="flex justify-between items-center border-b border-gray-200">
           <div className=""></div>
-          <h2 className="text-lg text-center pb-4">Select Branch</h2>
+          <h2 className="text-lg text-center pb-4 text-text-color">Select Branch</h2>
           <button onClick={() => setIsOpen(false)}>
             <FaTimes className="text-primary text-xl mb-4" />
           </button>
@@ -56,7 +56,7 @@ const SelectBranch = ({branches,
               className="flex justify-between items-center py-4 border-b border-gray-200 cursor-pointer"
               onClick={() => handleSelectBranch(branch?.id)}
             >
-              <p className="text-lg">{branch?.name}</p>
+              <p className="text-lg text-text-color">{branch?.name}</p>
               {branchId === branch?.id ? (
                 <FaCheckCircle className="text-primary text-xl" />
               ) : (
@@ -68,7 +68,7 @@ const SelectBranch = ({branches,
 
         {/* Done Button */}
         <button
-          className="w-full mt-6 py-3 bg-primary text-white font-semibold rounded-lg"
+          className="w-full mt-6 py-3 bg-primary text-light font-semibold rounded-lg"
           onClick={() => setIsOpen(false)}
         >
           Done
