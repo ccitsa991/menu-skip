@@ -43,7 +43,7 @@ const BannerCard = ({
   return (
     <div className="flex flex-col bg-white">
       {/* Image Section */}
-      <div className="relative h-48 w-full">
+      <div className="relative h-24 w-full">
         {/* Store Cover Image */}
         <img
           src={merchant?.storeCoverUrl}
@@ -118,24 +118,22 @@ const BannerCard = ({
       </div>
 
       {/* Get Direction */}
-      <div className="flex items-end justify-end">
+      {/* <div className="flex items-end justify-end">
         <div
           className="flex items-center gap-4 px-6 pt-4"
           onClick={GetDirections}
         >
-          {/* Text Section */}
           <div className="flex flex-col">
             <p className="font-bold text-text-color underline">
               {t("home.buttons.getDirections")}
             </p>
           </div>
 
-          {/* Icon Section */}
-          <div className="flex items-center justify-center w-8 h-8 bg-dark rounded-lg">
+          <div className="flex items-center justify-center w-8 h-8 bg-dark rounded-md">
             <FaDirections className="text-white text-xl" />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
