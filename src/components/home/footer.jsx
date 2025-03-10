@@ -17,13 +17,13 @@ const Footer = () => {
           onClick={() => setIsModalOpen(true)}
         >
           <PiInfoLight className="text-lg" />
-          <p className="underline">{t("footer.dailyCalories")}</p>
+          <p className="underline text-sm">{t("footer.dailyCalories")}</p>
         </div>
 
         {/* Right Section - Powered By */}
         <div className="flex items-center">
-          <p>{t("footer.poweredBy")}</p>
-          <img src="/images/skip-logo.svg" alt="skip" className="ps-1" />
+          <p className="text-sm">{t("footer.poweredBy")}</p>
+          <a target="_blank" href="https://skipit.app/"><img src="/images/skip-logo.svg" alt="skip" className="ps-1" /></a>
         </div>
       </div>
 
@@ -34,7 +34,7 @@ const Footer = () => {
         title={t("footer.modal.title")}
       >
         {/* Modal Content */}
-        <p className="text-[#8890A0] text-center pt-4 px-4">
+        <p className="text-[#8890A0] text-center  pt-4 px-4">
           {t("footer.modal.content")}
         </p>
       </SharedModal>
