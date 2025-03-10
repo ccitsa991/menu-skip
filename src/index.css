@@ -3,28 +3,28 @@
 /* ✅ Import Gilroy Font Correctly */
 @font-face {
   font-family: "Gilroy";
-  src: url("/fonts/Gilroy-Regular.ttf") format("truetype");
+  src: url("/fonts/Noto_Sans_Arabic/static/NotoSansArabic_Condensed-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Gilroy";
-  src: url("/fonts/Gilroy-Medium.ttf") format("truetype");
+  src: url("/fonts/Noto_Sans_Arabic/static/NotoSansArabic_Condensed-Medium.ttf")format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Gilroy";
-  src: url("/fonts/Gilroy-Bold.ttf") format("truetype");
+  src: url("/fonts/Noto_Sans_Arabic/static/NotoSansArabic_Condensed-SemiBold.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Gilroy";
-  src: url("/fonts/Gilroy-Bold.ttf") format("truetype");
+  src: url("/fonts/Noto_Sans_Arabic/static/NotoSansArabic_Condensed-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
