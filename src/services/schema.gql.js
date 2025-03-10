@@ -31,7 +31,7 @@ export const GET_CATEGORY = gql`
 `;
 
 export const GET_ITEMS = gql`
-query Items($merchantId: ID!, $categoryId: ID!, $branchId: ID!) {
+query Items($merchantId: String!, $categoryId: ID!, $branchId: ID!) {
     items(merchant_id: $merchantId, category_id: $categoryId, branch_id: $branchId, paginate: false) {
       __typename
       ... on ItemList {
