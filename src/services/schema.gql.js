@@ -38,6 +38,7 @@ query Items($merchantId: String!, $categoryId: ID!, $branchId: ID!) {
         data {
           id
           name
+          description
           price
           calories
           itemImageUrl
