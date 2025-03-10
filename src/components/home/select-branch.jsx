@@ -16,10 +16,10 @@ const SelectBranch = ({ branches, setBranchId, branchId }) => {
     <div className="flex flex-col items-center justify-center ">
       {/* Select Button */}
       <button
-        className="flex items-center gap-2 p-3 bg-gray-200 text-gray-500 rounded-lg"
+        className="flex items-center gap-2 px-2 py-1 bg-gray-200 text-gray-500 rounded-lg"
         onClick={() => setIsOpen(true)}
       >
-        <FaChevronDown className="text-gray-500 text-1xl" />
+        <FaChevronDown className="text-gray-500 text-sm" />
         {branches?.find((el) => el.id === branchId)?.name ||
           t("branches.selectBranch")}
       </button>

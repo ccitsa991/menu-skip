@@ -20,7 +20,7 @@ const FoodItem = ({ item, onClick }) => {
               <img
                 src={"/images/currency.svg"}
                 alt="currency"
-                className="me-1"
+                className="me-1 object-cover w-full h-full"
               />
               {item.price}
             </span>
@@ -51,7 +51,7 @@ const FoodItem = ({ item, onClick }) => {
       </div>
 
       {/* Separator Line */}
-      <hr className="my-4 border-gray-200" />
+      <hr className="my-1 border-gray-200" />
     </div>
   );
 };

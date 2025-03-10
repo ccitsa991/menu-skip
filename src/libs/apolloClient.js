@@ -1,8 +1,23 @@
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
-const client = new ApolloClient({
-  uri: "https://stage.skipit.app/graphql",
-  cache: new InMemoryCache(),
-});
+// Function to create a new Apollo Client instance
+const createApolloClient = (language) => {
+  const httpLink = new HttpLink({
+    uri: "https://stage.skipit.app/graphql",
+  });
 
-export default client;
+  const authLink = setContext((_, { headers }) => ({
+    headers: {
+      ...headers,
+      "language": language,
+    },
+  }));
+
+  return new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+  });
+};
+
+export default createApolloClient;

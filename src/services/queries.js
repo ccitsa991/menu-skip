@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { GET_CATEGORY, GET_ITEMS, GET_MERCHANT } from "./schema.gql";
+import i18n from "../i18n";
 
  
 export const useMerchant = (merchantId) => {
@@ -23,15 +24,20 @@ export const useCategories = (branchId) => {
 
 
  
-
 export const useItems = (merchantId, categoryId, branchId) => {
   const { loading, error, data } = useQuery(GET_ITEMS, {
-    variables: { merchantId, categoryId, branchId },
+    variables: { merchantId, categoryId, branchId }, 
     skip: !merchantId || !categoryId || !branchId,
+    context: {
+      headers: {
+        "Accept-Language": i18n.language,  
+      },
+    },
   });
+
   return { loading, error, items: data?.items?.data || [] };
 };
- 
+
 
 
 

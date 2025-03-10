@@ -33,7 +33,7 @@
 html {
   font-family: "Gilroy", sans-serif;
 }
-
+ 
 /* ✅ Define CSS Variables */
 @theme {
   --color-primary: #ef4130;
