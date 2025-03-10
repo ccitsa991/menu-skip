@@ -33,6 +33,10 @@
 html {
   font-family: "Gilroy", sans-serif;
 }
+body{
+  max-width: 500px;
+  margin: auto;
+}
  
 /* ✅ Define CSS Variables */
 @theme {

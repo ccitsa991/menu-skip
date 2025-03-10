@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <>
       {/* Fixed Footer */}
-      <div className="fixed bottom-0 left-0 w-full text-text-color bg-white shadow-lg py-3 px-6 flex items-center justify-between">
+      <div className="fixed bottom-0 w-full max-w-[500px] mx-auto  text-text-color bg-white shadow-lg py-3 px-6 flex items-center justify-between">
         {/* Left Section - Daily Calories */}
         <div
           className="flex items-center gap-2 cursor-pointer"
