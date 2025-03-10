@@ -14,6 +14,7 @@ const FoodItem = ({ item, onClick }) => {
         {/* Left Section - Text */}
         <div className="flex flex-col">
           <h3 className="font-semibold text-text-color">{item.name}</h3>
+          <h3 className="text-gray-500">{item.description}</h3>
           <div className="flex items-center gap-4 mt-2">
             <span className="flex items-center text-primary text-lg font-semibold">
               <img
