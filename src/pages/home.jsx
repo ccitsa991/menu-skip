@@ -12,7 +12,7 @@ const Home = () => {
   const { t, i18n } = useTranslation(); // Use translation hook
   const { merchantId } = useParams();
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const [language, setLanguage] = useState(localStorage.getItem("locale") || "en");
+  const [language, setLanguage] = useState(localStorage.getItem("locale") || "ar");
 
   // Fetch merchant data
   const {
@@ -51,12 +51,12 @@ const Home = () => {
   }, [theme]);
 
   // Handle Language Changes
-  useEffect(() => {
-    i18n.changeLanguage(language);
-    document.querySelector("html").dir = i18n.dir();
-    document.querySelector("html").lang = language;
-    localStorage.setItem("locale", language);
-  }, [language, i18n]);
+  // useEffect(() => {
+  //   i18n.changeLanguage(language);
+  //   document.querySelector("html").dir = i18n.dir();
+  //   document.querySelector("html").lang = language;
+  //   localStorage.setItem("locale", language);
+  // }, [language, i18n]);
 
   // Fetch items based on merchantId, categoryId, and branchId
   const {
@@ -95,7 +95,7 @@ const Home = () => {
     );
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex bg-white flex-col min-h-screen">
       {/* Banner Section */}
       <BannerCard
         theme={theme}

@@ -11,8 +11,6 @@ const BannerCard = ({
   setBranchId,
   theme,
   setTheme,
-  setLanguage,
-  language,
 }) => {
   const { t, i18n } = useTranslation(); // Use translation
 
@@ -24,7 +22,7 @@ const BannerCard = ({
   const GetDirections = () => {
     if (lat && lng) {
       const googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
-      window.open(googleMapsUrl, "_blank"); 
+      window.open(googleMapsUrl, "_blank");
     } else {
       alert(t("home.alerts.locationNotAvailable")); // Translated alert
     }
@@ -78,9 +76,13 @@ const BannerCard = ({
           {/* Language Toggle Button */}
           <button
             onClick={() => toggleLanguage(i18n.language === "en" ? "ar" : "en")}
-            className="p-2 rounded-full bg-white shadow-md"
+            className="p-2 rounded-full w-10 h-10 bg-white shadow-md"
           >
-            <FaGlobe className="text-lg text-text-color" />
+            {i18n.language === "en" ? (
+              <span className="text-lg text-text-color">Ar</span>
+            ) : (
+              <span className="text-lg text-text-color">En</span>
+            )}
           </button>
 
           {/* Dark Mode Toggle Button */}
