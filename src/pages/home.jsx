@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams, useParams } from "react-router-dom"; // Import useSearchParams
 import BannerCard from "../components/home/banner";
 import CategoryCarousel from "../components/home/categories";
 import FoodList from "../components/home/food-list";
 import Footer from "../components/home/footer";
 import { useCategories, useMerchant, useItems } from "../services/queries";
 import Spinner from "../components/shared/spinner";
-import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const Home = () => {
-  const { t, i18n } = useTranslation(); // Use translation hook
+  const { t, i18n } = useTranslation();
   const { merchantId } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams(); // URL Query params
+
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [language, setLanguage] = useState(localStorage.getItem("locale") || "ar");
 
@@ -20,14 +22,28 @@ const Home = () => {
     error: merchantError,
     merchant,
   } = useMerchant(merchantId);
-  const [branchId, setBranchId] = useState(null);
+  const [branchId, setBranchId] = useState(searchParams.get("branchId") || null);
 
-  // Update branchId when merchant data is available
+  // Sync branchId with URL on merchant load
   useEffect(() => {
     if (merchant && merchant.branches.length > 0) {
-      setBranchId(merchant.branches[0].id);
+      const urlBranchId = searchParams.get("branchId");
+      const defaultBranchId = merchant.branches[0].id;
+
+      setBranchId(urlBranchId || defaultBranchId);
+
+      if (!urlBranchId) {
+        setSearchParams({ branchId: defaultBranchId }, { replace: true });
+      }
     }
   }, [merchant]);
+
+  // Update URL when branchId changes
+  useEffect(() => {
+    if (branchId) {
+      setSearchParams({ branchId }, { replace: true });
+    }
+  }, [branchId]);
 
   // Fetch categories based on selected branch
   const {
@@ -49,14 +65,6 @@ const Home = () => {
     document.querySelector("body").classList = theme;
     localStorage.setItem("theme", theme);
   }, [theme]);
-
-  // Handle Language Changes
-  // useEffect(() => {
-  //   i18n.changeLanguage(language);
-  //   document.querySelector("html").dir = i18n.dir();
-  //   document.querySelector("html").lang = language;
-  //   localStorage.setItem("locale", language);
-  // }, [language, i18n]);
 
   // Fetch items based on merchantId, categoryId, and branchId
   const {
@@ -105,19 +113,16 @@ const Home = () => {
         setBranchId={setBranchId}
         setLanguage={setLanguage}
         language={language}
+        categoryId={categoryId}
+        setCategoryId={setCategoryId}
+        categories={categories}
       />
 
       {/* Categories Section */}
-      <div className="px-6 z-10 pt-2 pb-3 sticky top-0 bg-white">
-        <CategoryCarousel
-          categoryId={categoryId}
-          setCategoryId={setCategoryId}
-          categories={categories}
-        />
-      </div>
+  
 
       {/* Items List Section */}
-      <FoodList loading={itemsLoading} items={items} />
+      <FoodList theme={theme} loading={itemsLoading} items={items} />
 
       {/* Footer */}
       <Footer />

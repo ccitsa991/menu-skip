@@ -4,6 +4,7 @@ import { FaDirections } from "react-icons/fa";
 import { FaMoon, FaSun, FaGlobe } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
+import CategoryCarousel from "./categories";
 
 const BannerCard = ({
   merchant,
@@ -11,6 +12,9 @@ const BannerCard = ({
   setBranchId,
   theme,
   setTheme,
+  setCategoryId,
+  categories,
+  categoryId,
 }) => {
   const { t, i18n } = useTranslation(); // Use translation
 
@@ -39,30 +43,37 @@ const BannerCard = ({
   );
 
   return (
-    <div className="flex flex-col bg-white">
+    <div
+    className="flex flex-col bg-white rounded-b-2xl overflow-hidden"
+    style={{
+      boxShadow: "0px -5px 40px 0px rgba(180, 183, 209, 0.2)", // Custom bottom shadow
+    }}
+  >
+  
+      {" "}
       {/* Image Section */}
-      <div className="relative h-24 w-full">
+      <div className="relative h-28 w-full">
         {/* Store Cover Image */}
         <img
           src={merchant?.storeCoverUrl}
           alt={merchant?.store_name}
-          className="w-full h-full object-cover rounded-b-3xl"
+          className="w-full h-full object-cover"
         />
 
         {/* Back Button */}
-        <button
+        {/* <button
           className={`absolute top-4 w-fit p-2 rounded-full shadow-md bg-white ${
             i18n.dir() === "rtl" ? "right-4" : "left-4"
           }`}
         >
           <FaAngleLeft className="text-lg text-text-color" />
-        </button>
+        </button> */}
 
         {/* Floating Logo */}
         <img
           src={merchant?.storeLogoUrl}
           alt={merchant?.store_name}
-          className={`absolute bottom-[-50px] h-24 w-24 bg-white rounded-3xl shadow-xl ${
+          className={`absolute bottom-[-50px] h-18 w-18 bg-white rounded-xl shadow-xl ${
             i18n.dir() === "rtl" ? "right-4" : "left-4"
           }`}
         />
@@ -76,12 +87,12 @@ const BannerCard = ({
           {/* Language Toggle Button */}
           <button
             onClick={() => toggleLanguage(i18n.language === "en" ? "ar" : "en")}
-            className="p-2 rounded-full w-10 h-10 bg-white shadow-md"
+            className="p-2 rounded-md flex justify-center items-center w-8 h-8 bg-white shadow-md"
           >
             {i18n.language === "en" ? (
-              <span className="text-lg text-text-color">Ar</span>
+              <span className="text-sm text-text-color">Ar</span>
             ) : (
-              <span className="text-lg text-text-color">En</span>
+              <span className="text-sm text-text-color">En</span>
             )}
           </button>
 
@@ -93,19 +104,18 @@ const BannerCard = ({
               setTheme(newTheme);
               localStorage.setItem("theme", newTheme);
             }}
-            className="p-2 rounded-full bg-white shadow-md"
+            className="p-2 h-8 w-8 flex items-center justify-center rounded-md bg-white shadow-md"
           >
             {theme === "dark" ? (
-              <FaSun className="text-lg text-dark" />
+              <FaSun className="text-sm text-dark" />
             ) : (
-              <FaMoon className="text-lg text-dark" />
+              <FaMoon className="text-sm text-dark" />
             )}
           </button>
         </div>
       </div>
-
       {/* Content Section */}
-      <div className="px-6 mt-12 flex justify-between items-center">
+      <div className="px-6 mt-16 flex justify-between items-center">
         {/* Title */}
         <h2 className="text-2xl font-semibold text-text-color">
           {merchant?.store_name}
@@ -118,7 +128,6 @@ const BannerCard = ({
           branches={merchant?.branches}
         />
       </div>
-
       {/* Get Direction */}
       {/* <div className="flex items-end justify-end">
         <div
@@ -136,6 +145,13 @@ const BannerCard = ({
           </div>
         </div>
       </div> */}
+      <div className="px-6 z-10 pt-2 pb-3 sticky top-0 bg-white">
+        <CategoryCarousel
+          categoryId={categoryId}
+          setCategoryId={setCategoryId}
+          categories={categories}
+        />
+      </div>
     </div>
   );
 };

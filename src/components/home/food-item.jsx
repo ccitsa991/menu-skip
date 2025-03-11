@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaFireAlt } from "react-icons/fa";
 import { PiCurrencyKztBold } from "react-icons/pi";
 
-const FoodItem = ({ item, onClick }) => {
+const FoodItem = ({ item, onClick, theme }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
@@ -18,10 +18,15 @@ const FoodItem = ({ item, onClick }) => {
           <div className="flex items-center gap-4 mt-2">
             <span className="flex items-center text-primary text-lg font-semibold">
               <img
-                src={"/images/currency.svg"}
+                src={
+                  theme === "dark"
+                    ? "/images/currency-dark.svg"
+                    : "/images/currency.svg"
+                }
                 alt="currency"
                 className="me-1 object-cover w-full h-full"
               />
+
               {item.price}
             </span>
             <span className="flex items-center text-text-color font-semibold text-xs">
@@ -51,7 +56,10 @@ const FoodItem = ({ item, onClick }) => {
       </div>
 
       {/* Separator Line */}
-      <hr className="my-1 border-gray-200" />
+      <hr className="my-1"style={{
+        border:'.5px solid rgba(222, 231, 238, 0.3)'
+      }} />
+
     </div>
   );
 };
