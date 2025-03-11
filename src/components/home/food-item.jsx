@@ -8,7 +8,7 @@ const FoodItem = ({ item, onClick, theme }) => {
   return (
     <div>
       <div
-        className="flex items-center justify-between py-2 px-4 cursor-pointer"
+        className="flex items-center justify-between py-2  cursor-pointer"
         onClick={() => onClick(item)}
       >
         {/* Left Section - Text */}
@@ -21,10 +21,10 @@ const FoodItem = ({ item, onClick, theme }) => {
                 src={
                   theme === "dark"
                     ? "/images/currency-dark.svg"
-                    : "/images/currency.svg"
+                    : "/images/currency.png"
                 }
                 alt="currency"
-                className="me-1 object-cover w-full h-full"
+                className="me-1 object-cover w-3 h-3"
               />
 
               {item.price}
