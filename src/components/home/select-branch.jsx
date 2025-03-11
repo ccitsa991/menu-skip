@@ -16,7 +16,7 @@ const SelectBranch = ({ branches, setBranchId, branchId }) => {
     <div className="flex flex-col items-center justify-center ">
       {/* Select Button */}
       <button
-        className="flex items-center gap-2 px-2 py-1 bg-gray-200 text-gray-500 rounded-sm"
+        className="flex items-center gap-2 px-2 py-1 bg-gray-200 text-gray-500 rounded-md"
         onClick={() => setIsOpen(true)}
       >
         {branches?.find((el) => el.id === branchId)?.name ||

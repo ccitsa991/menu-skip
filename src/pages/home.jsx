@@ -73,6 +73,12 @@ const Home = () => {
     items,
   } = useItems(merchantId, categoryId, branchId);
 
+  useEffect(() => {
+    if (merchantId) {
+      document.title = `${merchantId} Menu - SKIP APP`;
+    }
+  }, [merchantId]);
+
   // Handle full-page loading state
   if (merchantLoading) {
     return (
