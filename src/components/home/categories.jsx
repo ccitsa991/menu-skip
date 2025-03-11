@@ -21,7 +21,7 @@ const CategoryCarousel = ({ categories, setCategoryId, categoryId }) => {
           <SwiperSlide key={category?.id} style={{ width: "auto" }}>
             <button
               onClick={() => setCategoryId(category?.id)}
-              className={`px-3 py-2 rounded-[12px] transition-all text-[12px] flex items-center justify-center whitespace-nowrap border  text-gray-800
+              className={`px-3 py-2 font-semibold rounded-[12px] transition-all text-[12px] flex items-center justify-center whitespace-nowrap border  text-gray-800
                 ${
                   categoryId === category?.id
                     ? "bg-primary text-light"
