@@ -40,7 +40,10 @@ const SelectBranch = ({ branches, setBranchId, branchId }) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex justify-between items-center border-b border-gray-200">
+        <div className="flex justify-between items-center border-b"
+        style={{
+          borderColor:' rgba(222, 231, 238, 0.3)'
+        }}>
           <div className=""></div>
           <h2 className="text-lg text-center pb-4 text-text-color">
             {t("branches.modalTitle")}
@@ -55,7 +58,10 @@ const SelectBranch = ({ branches, setBranchId, branchId }) => {
           {branches?.map((branch) => (
             <div
               key={branch?.id}
-              className="flex justify-between items-center py-4 border-b border-gray-200 cursor-pointer"
+              className="flex justify-between items-center py-4 border-b cursor-pointer"
+              style={{
+                borderColor:' rgba(222, 231, 238, 0.3)'
+              }}
               onClick={() => handleSelectBranch(branch?.id)}
             >
               <p className="text-lg text-text-color">{branch?.name}</p>
