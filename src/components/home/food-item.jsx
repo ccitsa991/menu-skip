@@ -16,7 +16,7 @@ const FoodItem = ({ item, onClick, theme }) => {
           <h3 className="font-semibold text-text-color">{item.name}</h3>
           <h3 className="text-gray-500">{item.description}</h3>
           <div className="flex items-center gap-4 mt-2">
-            <span className="flex items-center text-primary text-lg font-semibold">
+            <span style={{direction:'ltr'}} className="flex items-center text-primary text-lg font-semibold">
               <img
                 src={
                   theme === "dark"
@@ -29,7 +29,7 @@ const FoodItem = ({ item, onClick, theme }) => {
 
               {item.price}
             </span>
-            <span className="flex items-center text-text-color font-semibold text-xs">
+            <span style={{direction:'ltr'}}  className="flex items-center text-text-color font-semibold text-xs">
               <FaFireAlt className="me-1 text-text-color" />
               {item.calories}
             </span>

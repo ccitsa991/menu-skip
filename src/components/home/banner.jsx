@@ -45,9 +45,9 @@ const BannerCard = ({
   return (
     <div
     className="flex flex-col bg-white rounded-b-2xl overflow-hidden"
-    style={{
-      boxShadow: "0px -5px 40px 0px rgba(180, 183, 209, 0.2)", // Custom bottom shadow
-    }}
+    // style={{
+    //   boxShadow: "0px -5px 40px 0px rgba(180, 183, 209, 0.2)", // Custom bottom shadow
+    // }}
   >
   
       {" "}
