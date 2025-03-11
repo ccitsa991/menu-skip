@@ -37,11 +37,19 @@ body{
   max-width: 500px;
   margin: auto;
 }
+:root {
+  --color-primary: #ef4130;
+  --color-secondary: #e61e14;
+  --color-text-color: #23282e;
+  --color-dark: black;
+  --color-light: #fff;
+  --color-white: #fff;
+}
  
 /* ✅ Define CSS Variables */
 @theme {
-  --color-primary: #ef4130;
-  --color-secondary: #e61e14;
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
   --color-text-color: #23282e;
   --color-dark: black;
   --color-light: #fff;
@@ -65,20 +73,12 @@ body{
   --shadow-sm: 0px 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-md: 0px 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0px 6px 12px rgba(0, 0, 0, 0.15);
+
 }
-
-@layer theme {
-  .dark {
-    /* --color-primary: #EF4130;
-    --color-secondary: EF4130;
-    --color-white:black;
-    --color-dark:#fff;
-    --color-text-color: #fff; */
-
-    --color-primary: #ff6b5a;
-    --color-secondary: #d62828; 
-    --color-text-color: #e0e0e0;  
-    --color-white:  #1E2026;
-    --color-dark: #fff;  
-  }
+.dark {
+  --color-primary-dark: #d32f2f; 
+  --color-secondary-dark: #b71c1c; 
+  --color-text-color: #e0e0e0;
+  --color-white: #1E2026;
+  --color-dark: #fff;
 }

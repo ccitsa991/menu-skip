@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, useParams } from "react-router-dom"; // Import useSearchParams
 import BannerCard from "../components/home/banner";
-import CategoryCarousel from "../components/home/categories";
 import FoodList from "../components/home/food-list";
 import Footer from "../components/home/footer";
 import { useCategories, useMerchant, useItems } from "../services/queries";
@@ -78,6 +77,15 @@ const Home = () => {
       document.title = `${merchantId} Menu - SKIP APP`;
     }
   }, [merchantId]);
+  useEffect(() => {
+    if (merchant) {
+      const root = document.documentElement;
+
+      // Set light mode colors dynamically
+      root.style.setProperty("--color-primary", merchant.primaryColor || "#d32f2f");
+      root.style.setProperty("--color-secondary", merchant.secondaryColor || "#b71c1c");
+    }
+  }, [merchant]);
 
   // Handle full-page loading state
   if (merchantLoading) {
