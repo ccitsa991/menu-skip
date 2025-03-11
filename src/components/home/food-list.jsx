@@ -3,7 +3,7 @@ import FoodItem from "./food-item";
 import FoodModal from "./food-modal";
 import ShimmerItem from "./food-item-shimmer";
 
-const FoodList = ({ items, loading }) => {
+const FoodList = ({ items, loading ,theme}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -14,13 +14,13 @@ const FoodList = ({ items, loading }) => {
   };
 
   return (
-    <div className="bg-white px-6">
+    <div className="b px-6">
       {loading
         ? // Render 4 shimmer placeholders when loading
          [1,2,3,4].map((_, index) => <ShimmerItem key={index} />)
         :  
           items?.map((item) => (
-            <FoodItem key={item.id} item={item} onClick={handleOpenModal} />
+            <FoodItem  theme ={theme} key={item.id} item={item} onClick={handleOpenModal} />
           ))}
 
       {/* Modal Component */}
