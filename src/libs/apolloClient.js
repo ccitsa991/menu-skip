@@ -4,7 +4,7 @@ import { setContext } from "@apollo/client/link/context";
 // Function to create a new Apollo Client instance
 const createApolloClient = (language) => {
   const httpLink = new HttpLink({
-    uri: "https://stage.skipit.app/graphql",
+    uri: "https://api.skipit.app/graphql",
   });
 
   const authLink = setContext((_, { headers }) => ({
