@@ -49,7 +49,7 @@ const Home = () => {
     loading: categoriesLoading,
     error: categoriesError,
     categories,
-  } = useCategories(branchId);
+  } = useCategories(Number(branchId));
   const [categoryId, setCategoryId] = useState(null);
 
   // Update categoryId when categories data is available
@@ -70,7 +70,7 @@ const Home = () => {
     loading: itemsLoading,
     error: itemsError,
     items,
-  } = useItems(merchantId, categoryId, branchId);
+  } = useItems(merchantId, categoryId, Number(branchId));
 
   useEffect(() => {
     if (merchantId) {
